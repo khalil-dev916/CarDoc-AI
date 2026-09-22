@@ -7,7 +7,7 @@ An AI-powered car diagnostic chat application that helps users identify and unde
 | Edition | Stack | Location | Notes |
 |---------|-------|----------|-------|
 | **Web (v1)** | React + Node.js + OpenRouter | `backend/`, `frontend/` | Online LLM chat |
-| **Python offline (v2)** | Python + Streamlit + rule engine | `python/` | 70+ EN/FR rules, no API key, fully offline |
+| **Python offline (v2)** | Python + Streamlit + spaCy + rule engine | `python/` | 126 EN/FR rules, no API key, fully offline |
 
 ## Features
 
@@ -16,7 +16,7 @@ An AI-powered car diagnostic chat application that helps users identify and unde
 - **Quick Start Suggestions** - Pre-defined common car problems for instant testing
 - **Real-time Communication** - Seamless frontend-backend integration
 - **Dark Theme** - Professional automotive-inspired design with animated gradients
-- **Offline Python edition** - Bilingual (EN/FR) Streamlit assistant with 70+ rule-based diagnoses
+- **Offline Python edition** - Bilingual (EN/FR) Streamlit assistant with 126 rule-based diagnoses + spaCy lemmatization
 
 ## Tech Stack
 
@@ -32,9 +32,9 @@ An AI-powered car diagnostic chat application that helps users identify and unde
 - **CORS** - Cross-origin resource sharing
 
 ### Python offline edition (`python/`)
-- **Python 3.12** + **Streamlit** - Web UI
-- **spaCy** (optional) - NLP enhancement
-- **Rule-based engine** - 70+ diagnostic patterns (English & French)
+- **Python 3.12** + **Streamlit** - Web UI with conversation history
+- **spaCy 3.7** - tokenization + lemmatization (`en_core_web_sm`, `fr_core_news_sm`)
+- **Rule-based engine** - 126 diagnostic patterns across 14 vehicle systems (English & French)
 
 ## Project Structure
 
@@ -60,8 +60,8 @@ website/
 │
 └── python/                # Offline bilingual edition
     ├── main.py            # Streamlit entry point
-    ├── app/backend.py     # Greetings + response routing
-    ├── nlp/detect.py      # 70+ EN/FR diagnosis rules
+    ├── app/backend.py     # Greetings, routing, fallbacks
+    ├── nlp/detect.py      # 126 EN/FR diagnosis rules + spaCy
     └── requirements.txt
 ```
 
