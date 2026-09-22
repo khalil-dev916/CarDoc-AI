@@ -2,6 +2,13 @@
 
 An AI-powered car diagnostic chat application that helps users identify and understand vehicle problems through natural language conversation.
 
+## Editions
+
+| Edition | Stack | Location | Notes |
+|---------|-------|----------|-------|
+| **Web (v1)** | React + Node.js + OpenRouter | `backend/`, `frontend/` | Online LLM chat |
+| **Python offline (v2)** | Python + Streamlit + rule engine | `python/` | 70+ EN/FR rules, no API key, fully offline |
+
 ## Features
 
 - **AI-Powered Diagnostics** - Uses GPT-3.5 Turbo via OpenRouter for intelligent car troubleshooting
@@ -9,6 +16,7 @@ An AI-powered car diagnostic chat application that helps users identify and unde
 - **Quick Start Suggestions** - Pre-defined common car problems for instant testing
 - **Real-time Communication** - Seamless frontend-backend integration
 - **Dark Theme** - Professional automotive-inspired design with animated gradients
+- **Offline Python edition** - Bilingual (EN/FR) Streamlit assistant with 70+ rule-based diagnoses
 
 ## Tech Stack
 
@@ -23,6 +31,11 @@ An AI-powered car diagnostic chat application that helps users identify and unde
 - **dotenv** - Environment configuration
 - **CORS** - Cross-origin resource sharing
 
+### Python offline edition (`python/`)
+- **Python 3.12** + **Streamlit** - Web UI
+- **spaCy** (optional) - NLP enhancement
+- **Rule-based engine** - 70+ diagnostic patterns (English & French)
+
 ## Project Structure
 
 ```
@@ -32,18 +45,24 @@ website/
 │   ├── package.json
 │   └── .env               # OPENROUTER_API_KEY
 │
-└── frontend/
-    └── cardoc-ai/
-        └── app/
-            ├── src/
-            │   ├── App.jsx        # Main chat component
-            │   ├── App.css        # Complete styling
-            │   ├── main.jsx       # Entry point
-            │   └── index.css      # Global styles
-            ├── public/
-            │   └── car.svg        # Custom logo/favicon
-            ├── package.json
-            └── vite.config.js
+├── frontend/
+│   └── cardoc-ai/
+│       └── app/
+│           ├── src/
+│           │   ├── App.jsx        # Main chat component
+│           │   └── App.css        # Complete styling
+│           │   ├── main.jsx       # Entry point
+│           │   └── index.css      # Global styles
+│           ├── public/
+│           │   └── car.svg        # Custom logo/favicon
+│           ├── package.json
+│           └── vite.config.js
+│
+└── python/                # Offline bilingual edition
+    ├── main.py            # Streamlit entry point
+    ├── app/backend.py     # Greetings + response routing
+    ├── nlp/detect.py      # 70+ EN/FR diagnosis rules
+    └── requirements.txt
 ```
 
 ## Prerequisites
